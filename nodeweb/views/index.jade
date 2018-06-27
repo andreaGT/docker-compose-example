@@ -24,9 +24,10 @@ html(lang='en')
         .row
           .col-md-12
             .page-header.clearfix
-              h2.pull-left Sign In           
+              h2.pull-left Users           
           .col-md-12
             .page-header.clearfix
+              h3.pull-left Sign In 
               div
                 form(action='/save', method='POST')
                   | User: 
@@ -43,6 +44,8 @@ html(lang='en')
                   br                                
                   br                               
                   input.btn.btn-success(type='submit', value='Create')
+            .page-header.clearfix
+              h3.pull-left Users List
               div 
                 table
                     each user in users

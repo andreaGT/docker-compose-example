@@ -11,11 +11,11 @@ exports.saveUser = function(req, res) {
     var n = d.getTime();
     var userid = n;
     newUser.user = req.body['user_txt'];
-    newUser.name = req.body['name_txt'];
+    newUser.username = req.body['name_txt'];
     newUser.pass = req.body['pass_txt'];
    
-    client.hset('Users', userid, newUser.user, newUser.name, newUser.pass);
-    res.render('index', {title: 'App-Andre', users: users});
+    client.hset('Users', userid, newUser.user, newUser.username, newUser.pass);
+    res.redirect("/");
 };
 
 exports.getUsers = function (req, res){
