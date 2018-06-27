@@ -4,7 +4,7 @@ var routes = require('./routes/routes')
 var methodOverride = require('method-override')
 var bodyParser = require('body-parser')
 var path = require('path')
-//var errorHandler = require('errorhandler')
+var errorHandler = require('errorhandler')
     
 var app = express()
     
@@ -21,9 +21,9 @@ app.get('/', routes.getUsers);
 app.post('/save', routes.saveUser);
     
 // error handling middleware should be loaded after the loading the routes
-/*if (app.get('env') === 'development') {
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
-}*/
+if (app.get('env') === 'development') {
+  app.use(errorHandler())
+}
     
 var server = http.createServer(app)
 server.listen(app.get('port'), function () {
