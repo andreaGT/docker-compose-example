@@ -1,0 +1,50 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    |     
+    title #{title}
+    |     
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css')
+    |     
+    style(type='text/css').
+      .wrapper{
+      width: 750px;
+      margin: 0 auto;
+      }
+      .page-header h2{
+      margin-top: 0;
+      }
+      table tr td:last-child a{
+      margin-right: 15px;
+      }
+  body
+    .wrapper
+      .container-fluid
+        .row
+          .col-md-12
+            .page-header.clearfix
+              h2.pull-left Sign In           
+          .col-md-12
+            .page-header.clearfix
+              div
+                form(action='/save', method='POST')
+                  | User: 
+                  br                               
+                  input#name_txt(type='text', name='user_txt')
+                  br
+                  | Name: 
+                  br                                
+                  input#name_txt(type='text', name='name_txt')
+                  br
+                  | Password: 
+                  br                                
+                  input#lastname_txt(type='text', name='pass_txt')
+                  br                                
+                  br                               
+                  input.btn.btn-success(type='submit', value='Create')
+              div 
+                table
+                    each user in users
+                        tr
+                        td #{user.text}
