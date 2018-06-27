@@ -3,7 +3,7 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     |     
-    title #{title}
+    title #{tittle}
     |     
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css')
     |     
@@ -24,10 +24,10 @@ html(lang='en')
         .row
           .col-md-12
             .page-header.clearfix
-              h2.pull-left Users           
+              h2.pull-left Users                
           .col-md-12
             .page-header.clearfix
-              h3.pull-left Sign In 
+              h3 -- Sign In --                        
               div
                 form(action='/save', method='POST')
                   | User: 
@@ -40,13 +40,14 @@ html(lang='en')
                   br
                   | Password: 
                   br                                
-                  input#lastname_txt(type='text', name='pass_txt')
+                  input#lastname_txt(type='password', name='pass_txt')
                   br                                
                   br                               
                   input.btn.btn-success(type='submit', value='Create')
             .page-header.clearfix
-              h3.pull-left Users List
-              div 
+              h3 -- Users --
+              br                       
+              div
                 table
                     each user in users
                         tr
