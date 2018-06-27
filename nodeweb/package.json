@@ -4,7 +4,7 @@
     "description": "practica4",
     "main": "index.js",
     "dependencies": {
-      "express": "2.5.8",
+      "express": "^4.12.3",
       "redis": "^0.12.1"
     }
   }
