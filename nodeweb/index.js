@@ -3,21 +3,20 @@ var express = require('express'),
 
 var app = express();
 
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-});
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
 
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
+if(process.env.NODE_ENV === 'production') {
   app.use(express.errorHandler());
-});
+  // additional prod environemtn configuration
+}
+if(process.env.NODE_ENV === 'development') {
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  // additional prod environemtn configuration
+}
 
 // Routes
 app.get('/', routes.getUsers);
