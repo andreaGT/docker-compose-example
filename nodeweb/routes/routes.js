@@ -7,12 +7,14 @@ exports.index = function(req, res){
 
 exports.saveUser = function(req, res) {
     var newUser = {};
-    var userid = client.get('next');
+    var d = new Date();
+    var n = d.getTime();
+    newTodo.userid = n;
     newUser.user = req.body['user_txt'];
     newUser.username = req.body['name_txt'];
     newUser.pass = req.body['pass_txt'];
    
-    client.hset('Users', "no."+userid , newUser.user + " | "+ newUser.username + " | " + newUser.pass);
+    client.hset('Users', "no."+newUser.userid , newUser.user + " | "+ newUser.username + " | " + newUser.pass);
     client.incr('next');
     res.redirect("/");
 };
