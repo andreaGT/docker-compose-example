@@ -1,29 +1,30 @@
-var express = require('express'),
-    http = require('http');
-
-var app = express();
-
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
-  app.use(express.errorHandler());
-});
-
+var express = require('express')
+var http = require('http')
+var routes = require('./routes/routes')
+var methodOverride = require('method-override')
+var bodyParser = require('body-parser')
+var errorHandler = require('errorhandler')
+    
+var app = express()
+    
+    // all environments
+app.set('port', 8080)
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
+app.use(methodOverride())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+   
 // Routes
 app.get('/', routes.getUsers);
 app.post('/save', routes.saveUser);
-
-
-app.listen(80, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-});
+    
+// error handling middleware should be loaded after the loading the routes
+if (app.get('env') === 'development') {
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
+}
+    
+var server = http.createServer(app)
+server.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'))
+})
