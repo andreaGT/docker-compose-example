@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node
 
 RUN apt-get -y update 
 RUN mkdir data
