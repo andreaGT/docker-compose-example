@@ -1,5 +1,5 @@
 var redis = require('redis');
-var client = redis.createClient('6379', '172.19.0.2');
+var client = redis.createClient('6379', process.env.REDIS_URL);
 
 exports.index = function(req, res){
     res.render('index', { title: 'App-Andre' });
