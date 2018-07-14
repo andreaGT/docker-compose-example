@@ -1,0 +1,3 @@
+web-app:
+  build: .
+  dockerfile: Dockerfile
