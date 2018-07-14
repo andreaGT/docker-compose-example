@@ -10,7 +10,9 @@ pipeline{
         }
         stage('test'){
             steps{
-                echo "testing 2..."
+                echo "testing ..."
+                sh '''docker tag jenkins-app:latest 797409686075.dkr.ecr.us-west-2.amazonaws.com/jenkins-app:latest
+                docker push 797409686075.dkr.ecr.us-west-2.amazonaws.com/jenkins-app:latest'''
             }
         }
         stage('deploy'){
