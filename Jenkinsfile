@@ -11,8 +11,7 @@ pipeline{
         stage('test'){
             steps{
                 echo "testing ..."
-                sh '''sudo chmod +x test.sh
-                docker-compose up -d
+                sh '''docker-compose up -d
                 ./test.sh
                 docker tag jenkins-app:latest 797409686075.dkr.ecr.us-west-2.amazonaws.com/jenkins-app:latest
                 docker push 797409686075.dkr.ecr.us-west-2.amazonaws.com/jenkins-app:latest'''
