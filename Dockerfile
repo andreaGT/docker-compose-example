@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node
 
 RUN mkdir data
 COPY ./nodeweb data/
