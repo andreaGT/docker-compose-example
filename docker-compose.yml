@@ -1,3 +1,5 @@
 web-app:
-  build: .
-  dockerfile: Dockerfile
+    image: jenkins-app:latest
+    container_name: webtest
+    ports:
+        - "3000:3000"
