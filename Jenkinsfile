@@ -24,4 +24,9 @@ pipeline{
             }
         }
     }
+    post{
+        always{
+            sh'''docker-compose -f docker-compose.yml down --rmi all'''
+        }
+    }
 }
