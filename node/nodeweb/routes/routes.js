@@ -1,7 +1,8 @@
 var redis = require('redis');
-var client = redis.createClient('6379', process.env.REDISURL);
+var client = redis.createClient('6379', process.env.REDIS_URL);
 
 client.on("error", function(err) {
+    console.log(process.env.REDIS_URL);
     console.error("Error connecting to redis", err);
 });
 
