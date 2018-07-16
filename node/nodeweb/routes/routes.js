@@ -14,33 +14,31 @@ exports.saveUser = function(req, res) {
     newUser.user = req.body['user_txt'];
     newUser.username = req.body['name_txt'];
     newUser.pass = req.body['pass_txt'];
-    if ( client != null) {
-        client.hset('Users', "id."+newUser.user, "User: "+newUser.user + " | Name: "+ newUser.username + " | Password: " + newUser.pass);
-        res.redirect("/");
-    }
+    client.hset('Users', "id."+newUser.user, "User: "+newUser.user + " | Name: "+ newUser.username + " | Password: " + newUser.pass);
+    res.redirect("/");
+    
 };
 
 exports.getUsers = function (req, res){
     var users = [];
-    if ( client!=null) {
-        client.hgetall("Users", function(err, objs) {
-            if(objs){
-                for(var u in objs) {
-                    var newUser = {
-                        text: objs[u],
-                        id:u
-                    };
-                    users.push(newUser);
-                }
-            }else{
+    client.hgetall("Users", function(err, objs) {
+        if(objs){
+            for(var u in objs) {
                 var newUser = {
-                    text: "No hay usuarios",
-                    id:"0"
+                    text: objs[u],
+                    id:u
                 };
                 users.push(newUser);
             }
-            
-        });
-        res.render('index', {title: 'App-Andre', users: users});
-    }
+        }else{
+            var newUser = {
+                text: "No hay usuarios",
+                id:"0"
+            };
+            users.push(newUser);
+        }
+        
+    });
+    res.render('index', {title: 'App-Andre', users: users});
+    
 }
