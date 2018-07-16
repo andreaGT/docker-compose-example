@@ -1,5 +1,5 @@
 var redis = require('redis');
-var client = redis.createClient('6379', 'str1ijsj7ouz4f2.5dvolc.ng.0001.usw2.cache.amazonaws.com');
+var client = redis.createClient('6379', process.env.REDIS_URL);
 
 client.on("error", function(err) {
     console.log(process.env.REDIS_URL);
