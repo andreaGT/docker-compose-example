@@ -20,7 +20,7 @@ pipeline{
         stage('deploy'){
             steps{
                 echo "deploying..."
-                
+                sh '''aws ecs update-service --cluster stack-andre --service cluster-service-andre --force-new-deployment --region us-west-2'''
             }
         }
     }
