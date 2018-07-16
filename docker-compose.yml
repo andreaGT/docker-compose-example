@@ -31,7 +31,6 @@ services:
           memory: 128M
     depends_on:
       - redis
-      - git
     networks:
       - redis-net
       - web-net
@@ -49,7 +48,6 @@ services:
           memory: 128M
     depends_on:
       - redis
-      - git
     networks:
       - redis-net
       - web-net
