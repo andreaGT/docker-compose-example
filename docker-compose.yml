@@ -18,10 +18,10 @@ services:
       - web-net
   #Nodejs
   node1:
-    build: node/.
+    image: jenkins-app:latest
     ports:
      - "8081:3000"
-    container_name: jenkins-app:latest
+    container_name: websrv1
     environment:
         - REDIS_URL = 172.19.0.2
     deploy:
@@ -35,7 +35,7 @@ services:
       - redis-net
       - web-net
   node2:
-    build: jenkins-app:latest
+    image: jenkins-app:latest
     ports:
      - "8082:3000"
     container_name: websrv2
