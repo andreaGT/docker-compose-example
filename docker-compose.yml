@@ -40,7 +40,7 @@ services:
      - "8082:3000"
     container_name: websrv2
     environment:
-        - REDIS_URL = 172.19.0.2
+        - REDISURL=172.19.0.2
     deploy:
       resources:
         limits:

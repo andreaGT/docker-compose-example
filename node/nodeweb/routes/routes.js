@@ -1,5 +1,5 @@
 var redis = require('redis');
-var client = redis.createClient('6379', process.env.REDIS_URL);
+var client = redis.createClient('6379', process.env.REDISURL);
 
 client.on("error", function(err) {
     console.error("Error connecting to redis", err);
@@ -40,5 +40,4 @@ exports.getUsers = function (req, res){
         
     });
     res.render('index', {title: 'App-Andre', users: users});
-    
 }
